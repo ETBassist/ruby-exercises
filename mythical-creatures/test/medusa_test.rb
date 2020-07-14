@@ -10,23 +10,24 @@ class MedusaTest < Minitest::Test
   end
 
   def test_when_first_created_she_has_no_statues
-    skip
+
     medusa = Medusa.new("Cassiopeia")
     assert medusa.statues.empty?
   end
 
   def test_when_staring_at_a_person_she_gains_a_statue
-    skip
+
     medusa = Medusa.new("Cassiopeia")
     victim = Person.new("Perseus")
 
     medusa.stare(victim)
+
     assert_equal 1, medusa.statues.count
     assert_equal "Perseus", medusa.statues.first.name
   end
 
   def test_when_staring_at_a_person_that_person_turns_to_stone
-    skip
+
     medusa = Medusa.new("Cassiopeia")
     victim = Person.new("Perseus")
 
@@ -36,12 +37,32 @@ class MedusaTest < Minitest::Test
   end
 
   def test_can_only_have_three_victims
-    skip
+
+    medusa = Medusa.new("Cassiopeia")
+    perseus = Person.new("Perseus")
+    george = Person.new("George")
+    bobo = Person.new("Bobo")
+    victim = Person.new("Aaron")
+    medusa.stare(perseus)
+    medusa.stare(george)
+    medusa.stare(bobo)
+    medusa.stare(victim)
+    assert_equal medusa.statues.length, 3
     # your code here
   end
 
   def test_if_a_fourth_victim_is_stoned_first_is_unstoned
-    skip
+    
+    medusa = Medusa.new("Cassiopeia")
+    perseus = Person.new("Perseus")
+    george = Person.new("George")
+    bobo = Person.new("Bobo")
+    victim = Person.new("Aaron")
+    medusa.stare(perseus)
+    medusa.stare(george)
+    medusa.stare(bobo)
+    medusa.stare(victim)
+    refute perseus.stoned?
     # your code here
   end
 

@@ -13,13 +13,12 @@ class BonusQuestionsTest < Minitest::Test
     product = 1
     numbers = [1, 2, 3, 4, 5, 6, 7]
     numbers.each do |number|
-      # write code here
+      product *= number# write code here
     end
     assert_equal 5040, product
   end
 
   def test_first_roving_gnome
-    skip
     gnome1 = Gnome.new('forest')
     gnome2 = Gnome.new('roving')
     gnome3 = Gnome.new('snorkeling')
@@ -28,21 +27,25 @@ class BonusQuestionsTest < Minitest::Test
 
     gnomes = [gnome1, gnome2, gnome3, gnome4, gnome5]
 
-    # write code here
+    found = gnomes.find do |gnome|
+      gnome.roving?
+    end# write code here
 
     assert_equal gnome2, found
   end
 
   def test_sum_of_factorials
-    skip
     sum_of_factorials = 0
+    product = 1
     numbers = [1, 2, 3, 4, 5]
-    # write code here
+    numbers.each do |number|# write code here
+      product *= number
+      sum_of_factorials += product
+    end
     assert_equal 153, sum_of_factorials
   end
 
   def test_first_giant_squid
-    skip
     squid1 = Squid.new('tiny')
     squid2 = Squid.new('inky')
     squid3 = Squid.new('giant')
@@ -51,15 +54,17 @@ class BonusQuestionsTest < Minitest::Test
 
     squiddies = [squid1, squid2, squid3, squid4, squid5]
 
-    # write code here
+    found = squiddies.find do |squid|
+      squid.giant?
+    end# write code here
 
     assert_equal squid3, found
   end
 
   def test_max_value
-    skip
     max_num = 0
     numbers = [2, 16, 6, 50, 12]
+    max_num = numbers.max
     # write code here
     assert_equal 50, max_num
   end
@@ -73,13 +78,14 @@ class BonusQuestionsTest < Minitest::Test
 
     things = [thing1, thing2, thing3, thing4, thing5]
 
-    # write code here
+    found = things.find do |thing|
+      thing.weird?
+    end# write code here
 
     assert_equal thing3, found
   end
 
   def test_first_pink_unicorn
-    skip
     unicorn1 = Unicorn.new('white')
     unicorn2 = Unicorn.new('sparkly')
     unicorn3 = Unicorn.new('purple')
@@ -88,9 +94,10 @@ class BonusQuestionsTest < Minitest::Test
 
     unicorns = [unicorn1, unicorn2, unicorn3, unicorn4, unicorn5]
 
-    # write code here
+    found = unicorns.find do |unicorn|
+      unicorn.pink?
+    end# write code here
 
     assert_equal unicorn4, found
   end
 end
-

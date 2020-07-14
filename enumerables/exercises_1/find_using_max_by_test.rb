@@ -16,11 +16,10 @@ class FindUsingMaxByTest < Minitest::Test
 
   # This one is missing the block inside the loop.
   def test_shortest_word
-    skip
     words = ["apple", "banana", "cherry", "date", "eggplant"]
 
     found_word = words.max_by do |word|
-      # write code here
+      -word.length# write code here
     end
 
     assert_equal "date", found_word
@@ -28,9 +27,10 @@ class FindUsingMaxByTest < Minitest::Test
 
   # This one is missing the entire loop
   def test_array_with_the_most_items
-    skip
     arrays = [[:a, :b, :c], [1, 2, 3, 4, 5], ["zoo", :things, :stuff]]
-
+    biggest_array = arrays.max_by do |array|
+      array.length
+    end
     # write code here
 
     assert_equal [1, 2, 3, 4, 5], biggest_array
@@ -38,45 +38,48 @@ class FindUsingMaxByTest < Minitest::Test
 
   # You're on your own on this one.
   def test_array_with_the_fewest_items
-    skip
     arrays = [[:a, :b, :c], [1, 2, 3, 4, 5], ["zoo", :things, :stuff]]
-
+    smallest_array = arrays.max_by do |array|
+      -array.length
+    end
     # write code here
 
     assert_equal [:a, :b, :c], smallest_array
   end
 
   def test_biggest_number
-    skip
     numbers = [1, 10, 100, 1000, 10000, 1000000]
-
+    found = numbers.max
     # write code here
 
     assert_equal 1000000, found
   end
 
   def test_smallest_number
-    skip
     numbers = [1, 10, 100, 1000, 10000, 1000000]
-
+    found = numbers.max_by do |number|
+      -number
+    end
     # write code here
 
     assert_equal 1, found
   end
 
   def test_most_programmers
-    skip
     programmers = {ruby: ["katrina", "sandi", "jim", "aaron", "desi"], java: ["abby", "jon", "susan"]}
-
+    most_programmers = programmers.max_by do |language|
+      language[1].length
+    end
     # write code here
 
     assert_equal :ruby, most_programmers.first
   end
 
   def test_fewest_programmers
-    skip
     programmers = {ruby: ["katrina", "sandi", "jim", "aaron", "desi"], java: ["abby", "jon", "susan"]}
-
+    fewest_programmers = programmers.max_by do |language|
+      -language[1].length
+    end
     # write code here
 
     assert_equal :java, fewest_programmers.first
