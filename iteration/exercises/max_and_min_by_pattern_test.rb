@@ -30,18 +30,18 @@ class MaxAndMinByPatternTest < Minitest::Test
   end
 
   def test_3
-    skip
     meals = ["banana", "nuts", "salad", "steak", "cake"]
     shortest_word = meals[0]
     meals.each do |meal|
-      # Your Code Here
+      if meal.length < shortest_word.length
+        shortest_word = meal
+      end# Your Code Here
     end
 
     assert_equal "nuts", shortest_word
   end
 
   def test_4
-    skip
     meals = {
       breakfast: "banana",
       snack: "nuts",
@@ -51,24 +51,24 @@ class MaxAndMinByPatternTest < Minitest::Test
     }
     shortest_word = meals[meals.keys.first]
     meals.each do |meal, dish|
-      # Your Code Here
+      if dish.length < shortest_word.length
+        shortest_word = dish
+      end# Your Code Here
     end
 
     assert_equal "nuts", shortest_word
   end
 
   def test_5
-    skip
     stats = [3001, 431, 1695, 0.27601, 0.340]
     most_digits = stats[0]
     # Your Code Here
-
+    stats.each {|num| most_digits = num if num.to_s.length > most_digits.to_s.length}
     assert_equal 0.27601, most_digits
   end
 
 
   def test_6
-    skip
     stats = {
       games_played: 3001,
       home_runs: 431,
@@ -78,20 +78,19 @@ class MaxAndMinByPatternTest < Minitest::Test
     }
     most_digits = stats[stats.keys.first]
     # Your Code Here
-
+    stats.each {|stat, num| most_digits = num if num.to_s.length > most_digits.to_s.length}
     assert_equal 0.27601, most_digits
   end
 
   def test_7
-    skip
     ages = [39, 45, 29, 24, 50]
     # Your Code Here
-
+    oldest = ages[0]
+    ages.each {|age| oldest = age if age > oldest}
     assert_equal 50, oldest
   end
 
   def test_8
-    skip
     ages = {
       abdi: 39,
       hassan: 45,
@@ -100,24 +99,25 @@ class MaxAndMinByPatternTest < Minitest::Test
       miguel: 50
     }
     # Your Code Here
-
+    oldest = {name: ages.keys.first, age: ages.values.first}
+    ages.each {|name, age| oldest = {name: name.to_s, age: age} if age > oldest[:age]}
     expected = {name: "miguel", age: 50}
     assert_equal expected, oldest
   end
 
   def test_9
-    skip
     programmers = [["katrina", "sandi", "jim", "aaron", "desi"], ["abby", "jon", "susan"]]
     # Your Code Here
-
+    fewest_programmers = programmers[0]
+    programmers.each {|team| fewest_programmers = team if team.length < fewest_programmers.length}
     assert_equal ["abby", "jon", "susan"], fewest_programmers
   end
 
   def test_10
-    skip
     programmers = {ruby: ["katrina", "sandi", "jim", "aaron", "desi"], java: ["abby", "jon", "susan"]}
     # Your Code Here
-
+    fewest_programmers = programmers.keys.first
+    programmers.each {|language, people| fewest_programmers = language if people.length < programmers[fewest_programmers].length}
     assert_equal :java, fewest_programmers
   end
 end

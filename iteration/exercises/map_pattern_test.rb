@@ -34,7 +34,7 @@ class MapPatternTest < Minitest::Test
     numbers = [1, 2, 3, 4, 5]
     doubles = []
     numbers.each do |number|
-      # Your Code Here
+      doubles << number * 2# Your Code Here
     end
     assert_equal [2, 4, 6, 8, 10], doubles
   end
@@ -49,7 +49,7 @@ class MapPatternTest < Minitest::Test
     }
     doubles = {}
     numbers.each do |name, number|
-      # Your Code Here
+      doubles.store(name, number * 2)# Your Code Here
     end
     expected = {
       one: 2,
@@ -64,7 +64,9 @@ class MapPatternTest < Minitest::Test
   def test_5
     numbers = [1, 2, 3, 4, 5]
     squares = []
-    # Your Code Here
+    numbers.each do |number|
+      squares << number ** 2
+    end# Your Code Here
 
     assert_equal [1, 4, 9, 16, 25], squares
   end
@@ -79,7 +81,9 @@ class MapPatternTest < Minitest::Test
     }
     squares = {}
     # Your Code Here
-
+    numbers.each do |key, number|
+      squares.store(key, number ** 2)
+    end
     expected = {
       one: 1,
       two: 4,
@@ -92,8 +96,11 @@ class MapPatternTest < Minitest::Test
 
   def test_7
     names = ["alice", "bob", "charlie", "david", "eve"]
+    lengths = []
     #Your Code Here
-
+    names.each do |name|
+      lengths << name.length
+    end
     assert_equal [5, 3, 7, 5, 3], lengths
   end
 
@@ -106,7 +113,11 @@ class MapPatternTest < Minitest::Test
       sister: "eve"
     }
     #Your Code Here
+    lengths = {}
 
+    family.each do |member, name|
+      lengths.store(member, name.length)
+    end
     expected = {
       mother: 5,
       father: 3,
@@ -120,7 +131,8 @@ class MapPatternTest < Minitest::Test
   def test_9
     names = ["alice", "bob", "charlie", "david", "eve"]
     #Your Code Here
-
+    backwards = []
+    names.each { |name| backwards << name.reverse }
     assert_equal ["ecila", "bob", "eilrahc", "divad", "eve"], backwards
   end
 
@@ -133,7 +145,11 @@ class MapPatternTest < Minitest::Test
       sister: "eve"
     }
     #Your Code Here
-    
+    backwards = {}
+    family.each do |member, name|
+      backwards.store(member, name.reverse)
+    end
+
     expected = {
       mother: "ecila",
       father: "bob",
